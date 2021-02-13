@@ -1,2 +1,2 @@
 # shellproject
-my_own_shell
+project for something
