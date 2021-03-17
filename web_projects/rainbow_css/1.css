@@ -1,0 +1,21 @@
+.orange{color: #ffa500;}
+.red{color: #ff0000;}
+.yellow{color: #ffff00;}
+.green{color: #008000;}
+.skyblue{color: #87ceeb;}
+.blue{color: #0000ff;}
+.violet{color: #ee82ee;}
+.pos_center{text-align:center;}
+.bold{font-weight:bold;}
+.abzac_1{font-family: Verdana;
+	font-size:10pt;}
+.abzac_2{text-align:right;
+	font-family:Arial;
+	font-size:12pt;}
+.abzac_3{text-align:justify;
+	font-size:12pt;}
+.italic{font-style:italic;}
+.underline{text-decoration:underline;}
+.small{font-size:small;}
+.bold_and_cursive{font-weight:bold;
+		  font-style:italic;}
