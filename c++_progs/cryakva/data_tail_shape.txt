@@ -1,0 +1,8 @@
+Long
+Short
+Round
+Oval
+Square
+Rectangular
+Triangular
+Disheveled

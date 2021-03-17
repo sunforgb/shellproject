@@ -1,0 +1,102 @@
+==897== Memcheck, a memory error detector
+==897== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==897== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==897== Command: ./cryakva
+==897== Parent PID: 32004
+==897== 
+--897-- 
+--897-- Valgrind options:
+--897--    --leak-check=full
+--897--    --show-leak-kinds=all
+--897--    --track-origins=yes
+--897--    --verbose
+--897--    --log-file=valgrind-out-1.txt
+--897-- Contents of /proc/version:
+--897--   Linux version 4.15.3-2-generic (builder@build) (gcc version 6.3.0 20170516 (Debian 6.3.0-18+deb9u1)) #astra25 SMP Thu Mar 26 08:05:28 UTC 2020
+--897-- 
+--897-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3
+--897-- Page sizes: currently 4096, max supported 4096
+--897-- Valgrind library directory: /usr/lib/valgrind
+--897-- Reading syms from /home/user/cryakva/cryakva
+--897-- Reading syms from /lib/x86_64-linux-gnu/ld-2.24.so
+--897--   Considering /usr/lib/debug/.build-id/2f/4a49b0ae62f6ea221632c4ebe85ac0ef5bafdc.debug ..
+--897--   .. build-id is valid
+--897-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--897--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--897--   .. CRC mismatch (computed 0d0e047d wanted 9b17c2a2)
+--897--    object doesn't have a symbol table
+--897--    object doesn't have a dynamic symbol table
+--897-- Scheduler: using generic scheduler lock implementation.
+--897-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==897== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-897-by-user-on-???
+==897== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-897-by-user-on-???
+==897== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-897-by-user-on-???
+==897== 
+==897== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==897== don't want to do, unless you know exactly what you're doing,
+==897== or are doing some strange experiment):
+==897==   /usr/lib/valgrind/../../bin/vgdb --pid=897 ...command...
+==897== 
+==897== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==897==   /path/to/gdb ./cryakva
+==897== and then give GDB the following command
+==897==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=897
+==897== --pid is optional if only one valgrind process is running
+==897== 
+--897-- REDIR: 0x401aec0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580a7611 (???)
+--897-- REDIR: 0x4019770 (ld-linux-x86-64.so.2:index) redirected to 0x580a762b (???)
+--897-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--897--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--897--   .. CRC mismatch (computed f36805e5 wanted 27a75466)
+--897--    object doesn't have a symbol table
+--897-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--897--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--897--   .. CRC mismatch (computed 2a9d203c wanted c62145c4)
+--897--    object doesn't have a symbol table
+==897== WARNING: new redirection conflicts with existing -- ignoring it
+--897--     old: 0x0401aec0 (strlen              ) R-> (0000.0) 0x580a7611 ???
+--897--     new: 0x0401aec0 (strlen              ) R-> (2007.0) 0x04c2eea0 strlen
+--897-- REDIR: 0x4019990 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2ffa0 (strcmp)
+--897-- REDIR: 0x401b9d0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c33370 (mempcpy)
+--897-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22
+--897--    object doesn't have a symbol table
+--897-- Reading syms from /lib/x86_64-linux-gnu/libm-2.24.so
+--897--   Considering /usr/lib/debug/.build-id/67/daf600fb2cea5946b2ff40fb40681d510e2920.debug ..
+--897--   .. build-id is valid
+--897-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--897--    object doesn't have a symbol table
+--897-- Reading syms from /lib/x86_64-linux-gnu/libc-2.24.so
+--897--   Considering /usr/lib/debug/.build-id/02/e6cf59bd0065e05b5476e386246c150da5748b.debug ..
+--897--   .. build-id is valid
+--897-- REDIR: 0x5759710 (libc.so.6:strcasecmp) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x57551b0 (libc.so.6:strcspn) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x575ba00 (libc.so.6:strncasecmp) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x5757620 (libc.so.6:strpbrk) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x57579b0 (libc.so.6:strspn) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x5758d80 (libc.so.6:memmove) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x5757330 (libc.so.6:rindex) redirected to 0x4c2e830 (rindex)
+--897-- REDIR: 0x574ff10 (libc.so.6:malloc) redirected to 0x4c2bb80 (malloc)
+--897-- REDIR: 0x4ec7790 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c2c1f0 (operator new(unsigned long))
+--897-- REDIR: 0x5757f50 (libc.so.6:__GI_strstr) redirected to 0x4c335d0 (__strstr_sse2)
+--897-- REDIR: 0x4ec7850 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c2c910 (operator new[](unsigned long))
+--897-- REDIR: 0x575e100 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x5758e90 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4c30100 (memcpy@GLIBC_2.2.5)
+--897-- REDIR: 0x4ec58f0 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c2d7b0 (operator delete[](void*))
+--897-- REDIR: 0x57537b0 (libc.so.6:strcat) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x576bf90 (libc.so.6:__strcat_sse2_unaligned) redirected to 0x4c2ea90 (strcat)
+--897-- REDIR: 0x5755090 (libc.so.6:strcpy) redirected to 0x4a26740 (_vgnU_ifunc_wrapper)
+--897-- REDIR: 0x5769170 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x4c2eec0 (strcpy)
+--897-- REDIR: 0x5750510 (libc.so.6:free) redirected to 0x4c2cdb0 (free)
+--897-- REDIR: 0x5755650 (libc.so.6:strlen) redirected to 0x4c2ede0 (strlen)
+--897-- REDIR: 0x575f710 (libc.so.6:strchrnul) redirected to 0x4c32ea0 (strchrnul)
+--897-- REDIR: 0x5758e70 (libc.so.6:__GI_mempcpy) redirected to 0x4c330a0 (__GI_mempcpy)
+--897-- REDIR: 0x4ec58c0 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c2d2b0 (operator delete(void*))
+==897== 
+==897== HEAP SUMMARY:
+==897==     in use at exit: 0 bytes in 0 blocks
+==897==   total heap usage: 3,641 allocs, 3,641 frees, 2,512,385 bytes allocated
+==897== 
+==897== All heap blocks were freed -- no leaks are possible
+==897== 
+==897== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==897== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
