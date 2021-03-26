@@ -79,7 +79,7 @@ const char *generate_home()
 	if ((rand()%2)==0)
 		return "Big Rab Lake";
 	else
-		return "Small Rab Lake";
+		return "Small Rab Lake"; // the name of the second lake has been changed due to the same names in the assignment
 }
 
 char *generate_color()
