@@ -3,33 +3,23 @@
 int main(int argc, char **argv)
 {
 	srand(time(NULL));
-	/*Hohl_cryak *a;
-	a = new Hohl_cryak;
-	Mram_chirk *b;
-	b = new Mram_chirk;
-	Kamen *c = new Kamen;
-	Blue_chirok *d = new Blue_chirok;
-	Mada_cryakva *e = new Mada_cryakva;
-	Krohali *f = new Krohali;
-	a->Show_Info();
-	b->Show_Info();
-	c->Show_Info();
-	d->Show_Info();
-	e->Show_Info();
-	f->Show_Info();*/
-	Lake first_lake,second_lake;
+	Lake first_lake, second_lake, first_farm, second_farm;
 	generate_world(&first_lake,&second_lake);
-	//printf("Size of first lake: %d\n", first_lake.get_size());
-	//printf("Size of second lake: %d\n",second_lake.get_size());
-	
-	first_lake.print_list();
-	second_lake.print_list();
-	/*while(1)
-	{
-		generate_name();
-		printf("weight: %d\n",generate_weight());
-		printf("Lake : %s\n", generate_home());
-		printf("beak_color : %s\n", generate_beak_color());
-	}*/
+	//first_lake.print_list();
+	//second_lake.print_list();
+	Cryak * some_duck;
+	printf("Size of first lake: %d\n", first_lake.get_size());
+	printf("Size of second lake: %d\n",second_lake.get_size());
+	some_duck=first_lake.del_node(rand()%(first_lake.get_size()));
+	some_duck->Show_Info();
+	first_farm.add_list(some_duck);
+	printf("Size of first farm: %d\n", first_farm.get_size());
+	printf("Size of first lake: %d\n", first_lake.get_size());
+	some_duck=first_lake.del_node(rand()%(first_lake.get_size()));
+	first_farm.add_list(some_duck);
+	printf("Size of first farm: %d\n", first_farm.get_size());
+	printf("Size of first lake: %d\n", first_lake.get_size());
+	//first_farm.print_list();
+	//first_lake.print_list();
 	return 0;
 }	 

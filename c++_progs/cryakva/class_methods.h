@@ -44,7 +44,26 @@ void Hohl_cryak::Show_Info() const
 		I have Stamina on level: %d\n \
 		My Beak_color is: %s\n",this->home,this->stamina,this->beak_color);
 }
-
+int Hohl_cryak::get_fly() const
+{
+	return 0;
+}
+int Hohl_cryak::get_swim() const
+{
+	return (this->swim);
+}
+int Hohl_cryak::get_clev() const
+{
+	return 0;
+}
+int Hohl_cryak::get_run() const
+{
+	return 0;
+}
+int Hohl_cryak::get_home() const
+{
+	return 1;
+}
 				//Class Mram_chirk methods
 Mram_chirk::Mram_chirk() : fly(1), tail_shape(generate_tail_shape()), \
 height((rand()%60)+40){}
@@ -67,7 +86,26 @@ void Mram_chirk::Show_Info() const
 	printf("\t\tMy Tail_Shape is: %s\n \
 		My Height is: %d\n",this->tail_shape,this->height);
 }
-
+int Mram_chirk::get_fly() const
+{
+	return (this->fly);
+}
+int Mram_chirk::get_swim() const
+{
+	return 0;
+}
+int Mram_chirk::get_clev() const
+{
+	return 0;
+}
+int Mram_chirk::get_run() const
+{
+	return 0;
+}
+int Mram_chirk::get_home() const
+{
+	return 0;
+}
 				//Class Kamen methods
 Kamen::Kamen() : clev(1), wingspan((rand()%68)+30), sex('M') {}
 
@@ -87,7 +125,26 @@ void Kamen::Show_Info() const
 	printf("\t\tMy wingspan is: %d\n \
 		My sex is: %c\n",this->wingspan,this->sex);
 }
-
+int Kamen::get_fly() const
+{
+	return 0;
+}
+int Kamen::get_swim() const
+{
+	return 0;
+}
+int Kamen::get_clev() const
+{
+	return (this->clev);
+}
+int Kamen::get_run() const
+{
+	return 0;
+}
+int Kamen::get_home() const
+{
+	return 0;
+}
 			//Class Blue_chirok methods
 
 Blue_chirok::Blue_chirok() : swim(1), wing_shape(generate_wing_shape()), hobby(generate_hobby()) {}
@@ -112,8 +169,26 @@ void Blue_chirok::Show_Info() const
 	printf("\t\tMy wing shape is: %s\n \
 		My hobby is: %s\n",this->wing_shape,this->hobby);
 }
-
-
+int Blue_chirok::get_fly() const
+{
+	return 0;
+}
+int Blue_chirok::get_swim() const
+{
+	return (this->swim);
+}
+int Blue_chirok::get_clev() const
+{
+	return 0;
+}
+int Blue_chirok::get_run() const
+{
+	return 0;
+}
+int Blue_chirok::get_home() const
+{
+	return 0;
+}
 			//Class Mada_cryakva methods
 
 Mada_cryakva::Mada_cryakva() : fly(1),width((rand()%40)+20), tail_shape(generate_tail_shape()) {}
@@ -137,8 +212,26 @@ void Mada_cryakva::Show_Info() const
 		My tail shape is: %s\n",this->width,this->tail_shape);
 }
 
-
-
+int Mada_cryakva::get_fly() const
+{
+	return (this->fly);
+}
+int Mada_cryakva::get_swim() const
+{
+	return 0;
+}
+int Mada_cryakva::get_clev() const
+{
+	return 0;
+}
+int Mada_cryakva::get_run() const
+{
+	return 0;
+}
+int Mada_cryakva::get_home() const
+{
+	return 0;
+}
 			//class Krohali methods
 
 Krohali::Krohali() : run(1), eye_color(generate_color()), tail_shape(generate_tail_shape()) {}
@@ -163,9 +256,28 @@ void Krohali::Show_Info() const
 	printf("\t\tMy eye color is: %s\n \
 		My tail shape is: %s\n",this->eye_color,this->tail_shape);
 }
-
+int Krohali::get_fly() const
+{
+	return 0;
+}
+int Krohali::get_swim() const
+{
+	return 0;
+}
+int Krohali::get_clev() const
+{
+	return 0;
+}
+int Krohali::get_run() const
+{
+	return (this->run);
+}
+int Krohali::get_home() const
+{
+	return 0;
+}
 			//class Lake methods
-Lake::Lake() : head(NULL), size_list(0) {};
+Lake::Lake() : head(NULL), size_list(0), count_fly(0), count_swim(0), count_clev(0), count_run(0) {};
 Lake::~Lake()
 {
 	Cryak *prev = NULL;
@@ -186,6 +298,26 @@ int Lake::get_size() const
 {
 	return size_list;
 }
+int Lake::get_count_fly() const
+{
+	return count_fly;
+}
+int Lake::get_count_swim() const
+{
+	return count_swim;
+}
+int Lake::get_count_clev() const
+{
+	return count_clev;
+}
+int Lake::get_count_run() const
+{
+	return count_run;
+}
+int Lake::get_count_home() const
+{
+	return count_home;
+}
 
 void Lake::add_list(Cryak *node)
 {
@@ -195,6 +327,11 @@ void Lake::add_list(Cryak *node)
 		head = node;
 		head->next = NULL;
 		size_list++;
+		count_fly+=(head->get_fly());
+		count_swim+=(head->get_swim());
+		count_clev+=(head->get_clev());
+		count_run+=(head->get_run());
+		count_home+=(head->get_home());
 	}
 	else
 	{
@@ -204,6 +341,11 @@ void Lake::add_list(Cryak *node)
 		if ((prev)&&((prev->next)==NULL))
 			prev->next=node;
 		size_list++;
+		count_fly+=(node->get_fly());
+		count_swim+=(node->get_swim());
+		count_clev+=(node->get_clev());
+		count_run+=(node->get_run());
+		count_home+=(node->get_home());
 	}
 }
 
@@ -215,4 +357,37 @@ void Lake::print_list()
 		prev->Show_Info();
 		prev=prev->next;
 	}
+}
+Cryak* Lake::del_node(int i)
+{
+	Cryak *prev, *tmp;;
+	tmp=head;
+	if (!i)
+	{
+		head = head->next;
+		tmp->next = NULL;
+		size_list--;
+		count_fly-=(tmp->get_fly());
+		count_swim-=(tmp->get_swim());
+		count_clev-=(tmp->get_clev());
+		count_run-=(tmp->get_run());
+		count_home-=(tmp->get_home());
+		return tmp;
+	}
+	while (i!=1)
+	{
+		tmp=tmp->next;
+		i--;
+	}
+	prev = tmp;
+	tmp=tmp->next;
+	prev->next = tmp->next;
+	tmp->next = NULL;
+	size_list--;
+	count_fly-=(tmp->get_fly());
+	count_swim-=(tmp->get_swim());
+	count_clev-=(tmp->get_clev());
+	count_run-=(tmp->get_run());
+	count_home-=(tmp->get_home());
+	return tmp;
 }
