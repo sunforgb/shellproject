@@ -14,6 +14,10 @@ public:
 	virtual int get_clev() const = 0;
 	virtual int get_run() const = 0;
 	virtual int get_home() const = 0;
+	virtual int escape(const int lake_id) const = 0;
+	virtual int get_unique_id() const = 0;
+	virtual void Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const = 0;
+	void hunted_count_inc();
 };
 
 class Hohl_cryak : public Cryak {
@@ -30,6 +34,9 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Mram_chirk : public Cryak {
@@ -45,6 +52,9 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Kamen : public Cryak {
@@ -60,6 +70,9 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Blue_chirok : public Cryak {
@@ -75,6 +88,9 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Mada_cryakva : public Cryak {
@@ -90,6 +106,9 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks (const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Krohali : public Cryak {
@@ -105,10 +124,15 @@ public:
 	virtual int get_clev() const;
 	virtual int get_run() const;
 	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks (const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id() const;
 };
 
 class Lake {
 	Cryak *head;
+	const char *name;
+	const int lake_id;
 	int size_list;
 	int count_fly;
 	int count_swim;
@@ -116,7 +140,7 @@ class Lake {
 	int count_run;
 	int count_home;
 public:
-	Lake();
+	Lake(const char *tmp, const int id);
 	~Lake();
 	int get_size() const;
 	int get_count_fly() const;
@@ -124,15 +148,41 @@ public:
 	int get_count_clev() const;
 	int get_count_run() const;
 	int get_count_home() const;
+	void Show_Info() const;
 	void add_list(Cryak *node);
 	void print_list();
+	int get_lake_id() const;
 	Cryak* del_node(int i);
+	int ducks_escape_try(Lake *first_lake, Lake *second_lake);
+	void del_creative_cryak();
 };
 
 class Hunters {
 	const char *name;
+	const int hunter_id;
 public:
-	void hunt();
-	void smash_duck();
-	void chill();
+	Hunters(const int id, const char *word);
+	~Hunters();
+	int hunt(Lake *first_lake,Lake *second_lake, Lake *farm, int &hunted_ducks) const;
+	void Show_Info() const;
+};
+
+class Creative_cryak : public Cryak {
+	const char *name;
+	int weight;
+	int hunted_count;
+	int fly;
+	int swim;
+public:
+	Creative_cryak();
+	virtual ~Creative_cryak();
+	virtual void Show_Info() const;
+	virtual int get_fly() const;
+	virtual int get_swim() const;
+	virtual int get_clev() const;
+	virtual int get_run() const;
+	virtual int get_home() const;
+	virtual int escape(const int lake_id) const;
+	virtual void Show_count_hunted_ducks (const int hunted_lake_1, const int hunted_lake_2) const;
+	virtual int get_unique_id () const;
 };

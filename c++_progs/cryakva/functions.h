@@ -74,14 +74,6 @@ char *generate_name()
 	return full_name;
 }
 
-const char *generate_home()
-{
-	if ((rand()%2)==0)
-		return "Big Rab Lake";
-	else
-		return "Small Rab Lake"; // the name of the second lake has been changed due to the same names in the assignment
-}
-
 char *generate_color()
 {
 	return get_string((rand()%7),"data_color.txt");
@@ -103,10 +95,7 @@ char *generate_wing_shape()
 }
 void generate_world(Lake *first_lake, Lake *second_lake)
 {
-	int i;
-	//i = rand()%32;
-	//j = 32 - i;
-	for (i = 0;i<27;i++)
+	for (int i = 0;i<27;i++)
 	{
 		first_lake->add_list(new Hohl_cryak);
 		first_lake->add_list(new Mram_chirk);
@@ -135,4 +124,4 @@ void generate_world(Lake *first_lake, Lake *second_lake)
 	}
 	printf("first lake contains cryakvas: %d\n",first_lake->get_size());
 	printf("second lake constains cryakvas: %d\n",second_lake->get_size());	
-}	
+}
