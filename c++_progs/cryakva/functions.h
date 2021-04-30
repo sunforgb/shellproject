@@ -122,6 +122,4 @@ void generate_world(Lake *first_lake, Lake *second_lake)
 			printf("Error in generate_world, extra_cryakvas not added\n");
 			break;
 	}
-	printf("first lake contains cryakvas: %d\n",first_lake->get_size());
-	printf("second lake constains cryakvas: %d\n",second_lake->get_size());	
 }
