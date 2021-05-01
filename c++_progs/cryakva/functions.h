@@ -2,11 +2,12 @@
 #include <time.h>
 #include <string.h>
 
-char* get_string(int count, const char *file_name)  /* skip count '\n', example count=14 - we get 15 string*/
+char* get_string(const char *file_name)  /* get random string from file_name*/
 {
 	FILE *fp;
 	int i = 0;
 	int j = 0;
+	int count = 0;
 	int c;
 	char symbol;
 	char *segment = NULL;
@@ -16,6 +17,16 @@ char* get_string(int count, const char *file_name)  /* skip count '\n', example 
 		printf("Can't open file %s\n", file_name);
 		exit(1);
 	}
+	while ((c = fgetc(fp))!=EOF)
+	{
+		if (c=='\n')
+			count++;
+		else
+			continue;
+	}
+	fseek(fp,0,SEEK_SET);
+	count--;
+	count = rand()%count;
 	while (i!=count)
 	{
 		if ((c = fgetc(fp))=='\n')
@@ -61,8 +72,8 @@ char *generate_name()
 	name = NULL;
 	adj = NULL;
 	full_name = NULL;
-	adj = get_string((rand()%28),"data_adj.txt");
-	name = get_string((rand()%29),"data_names.txt");
+	adj = get_string("data_adj.txt");
+	name = get_string("data_names.txt");
 	full_name = new char[strlen(name)+strlen(adj)+strlen("Cryakva")+3];
 	full_name = strcpy(full_name, adj);
 	full_name = strcat(full_name, " ");
@@ -76,22 +87,22 @@ char *generate_name()
 
 char *generate_color()
 {
-	return get_string((rand()%7),"data_color.txt");
+	return get_string("data_color.txt");
 }
 
 char *generate_tail_shape()
 {
-	return get_string((rand()%8),"data_tail_shape.txt");
+	return get_string("data_tail_shape.txt");
 }	
 	
 char *generate_hobby()
 {
-	return get_string((rand()%8),"data_hobby.txt");
+	return get_string("data_hobby.txt");
 }
 
 char *generate_wing_shape()
 {
-	return get_string((rand()%8),"data_tail_shape.txt");
+	return get_string("data_tail_shape.txt");
 }
 void generate_world(Lake *first_lake, Lake *second_lake)
 {

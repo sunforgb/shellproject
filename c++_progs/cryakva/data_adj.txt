@@ -26,4 +26,14 @@ Rich
 Sad
 Strange
 Wise
+Bitter
+Cruel
+Delicate
+Dirty
+False
+Loud
+Old
+Secret
+Strange
+Wrong
 
