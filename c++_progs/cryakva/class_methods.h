@@ -659,8 +659,15 @@ int Hunters::hunt(Lake *first_lake, Lake *second_lake, Lake *farm ,int &hunted_d
 	for (int j=0; j<number_ducks_to_hunt; j++)
 	{
 		some_duck = hunt_lake->del_node(rand()%hunt_lake->get_size());
-		some_duck->hunted_count_inc();
-		farm->add_list(some_duck);
+		if ((some_duck->get_clev()==1)&&(rand()%2))
+		{
+			hunt_lake->add_list(some_duck);
+		}
+		else
+		{
+			some_duck->hunted_count_inc();
+			farm->add_list(some_duck);
+		}
 	}
 	hunted_ducks = number_ducks_to_hunt;
 	return hunt_lake->get_lake_id();

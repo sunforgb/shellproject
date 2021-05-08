@@ -5,13 +5,13 @@ int main(int argc, char **argv)
 	srand(time(NULL));
 	int days = HUNT_DAYS;
 	int input;
+	int tmp;
 	int creative_effect = 0;
 	int creative_cryak_days = 3;
 	int hunted_ducks_somewhere = 0;
 	int hunted_ducks_on_first_lake = 0;
 	int hunted_ducks_on_second_lake = 0;
-	int flag;
-	Cryak *creative_cryak;
+	Cryak *creative_cryak = NULL;
 	// the name of the second Lake - Small Slave Lake, because in the task the names of the lakes are the same
 	Lake first_lake("Great Slave Lake", 1), second_lake("Small Slave Lake", 2), first_farm("YUNUSY", 3), second_farm("QYLAQA", 4);
 	generate_world(&first_lake,&second_lake);
@@ -23,7 +23,6 @@ int main(int argc, char **argv)
 		if ((creative_effect==0)&&(rand()%2))
 		{
 			creative_effect++;
-			flag = 1;
 			switch (rand()%4)
 			{
 				case 0:
@@ -47,12 +46,16 @@ int main(int argc, char **argv)
 					break;
 			}
 		}
-		printf("Number of day : %d\n", HUNT_DAYS-days);
+		printf("Number of day : %d\n", HUNT_DAYS-days+1);
 		printf("Menu:\n");
 		printf("Enter 1 to see how many ducks on the lake:\n");
 		printf("Enter 2 to see which ducks are on the lake or farm:\n");
 		printf("Enter 3 to start a new hunt day:\n");
-		scanf ("%d", &input);
+		fseek(stdin,0,SEEK_END);
+		input = getchar();
+		input = input - (int)'0';
+		if ((tmp=getchar())!='\n')
+			input^=input;
 		printf("\e[1;1H\e[2J");
 		switch (input)
 		{
@@ -137,14 +140,13 @@ int main(int argc, char **argv)
 				{
 					creative_cryak_days--;
 				}
-				if ((creative_cryak_days == 0)&&(flag == 1))
+				if ((creative_cryak_days == 0)&&(creative_effect))
 				{
 					first_lake.del_creative_cryak();
 					second_lake.del_creative_cryak();
 					first_farm.del_creative_cryak();
 					second_farm.del_creative_cryak();
 					creative_cryak = NULL;
-					flag = 0;
 				}
 				break;
 			default:
