@@ -489,7 +489,7 @@ void Lake::print_list()
 }
 Cryak* Lake::del_node(int i)
 {
-	Cryak *prev, *tmp;;
+	Cryak *prev, *tmp;
 	tmp=head;
 	if (!i)
 	{
