@@ -138,7 +138,12 @@ int Mram_chirk::get_unique_id() const {return 0;}
 void Mram_chirk::Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const {}
 
 				//Class Kamen methods
-Kamen::Kamen() : clev(1), wingspan((rand()%68)+30), sex('M') {}
+Kamen::Kamen() : clev(1), wingspan((rand()%68)+30) {
+	if (rand()%2==1)
+		sex='M';
+	else
+		sex='F';
+}
 
 Kamen::~Kamen()
 {
@@ -396,8 +401,8 @@ int Creative_cryak::escape(const int lake_id) const
 }
 void Creative_cryak::Show_count_hunted_ducks(const int hunted_lake_1, const int hunted_lake_2) const
 {
-	printf("На Great Slave Lake было поймано уток - %d\n", hunted_lake_1);
-	printf("На Small Slave Lake было поймано уток - %d\n", hunted_lake_2);
+	printf("%d ducks were hunted on the Great slave Lake\n", hunted_lake_1);
+	printf("%d ducks were hunted on the Small Slave Lake\n", hunted_lake_2);
 }
 
 int Creative_cryak::get_unique_id() const
@@ -588,16 +593,9 @@ int Lake::ducks_escape_try(Lake *first_lake, Lake *second_lake)
 
 						//Class Hunters methods
 
-Hunters::Hunters(const int id, const char *word) : name(word), hunter_id(id) {}
+Hunters::Hunters(const int id) : hunter_id(id) {}
 
 Hunters::~Hunters(){}
-
-void Hunters::Show_Info() const
-{
-	printf("Hello, I'm Hunter\n");
-	printf("\t\t My name is : %s\n \
-		 My ID is : %d\n",this->name, this->hunter_id);
-}
 
 int Hunters::hunt(Lake *first_lake, Lake *second_lake, Lake *farm ,int &hunted_ducks) const
 {

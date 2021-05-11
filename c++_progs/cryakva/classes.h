@@ -60,7 +60,7 @@ public:
 class Kamen : public Cryak {
 	int clev;
 	int wingspan;
-	const char sex;
+	char sex;
 public:
 	Kamen();
 	virtual ~Kamen();
@@ -158,13 +158,11 @@ public:
 };
 
 class Hunters {
-	const char *name;
 	const int hunter_id;
 public:
-	Hunters(const int id, const char *word);
+	Hunters(const int id);
 	~Hunters();
 	int hunt(Lake *first_lake,Lake *second_lake, Lake *farm, int &hunted_ducks) const;
-	void Show_Info() const;
 };
 
 class Creative_cryak : public Cryak {

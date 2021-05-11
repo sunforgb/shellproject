@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	// the name of the second Lake - Small Slave Lake, because in the task the names of the lakes are the same
 	Lake first_lake("Great Slave Lake", 1), second_lake("Small Slave Lake", 2), first_farm("YUNUSY", 3), second_farm("QYLAQA", 4);
 	generate_world(&first_lake,&second_lake);
-	Hunters hunter_1(1,"Max"), hunter_2(2,"Oleg"), hunter_3(3,"Egor"), hunter_4(4,"Yaroslav");
+	Hunters hunter_1(1), hunter_2(2), hunter_3(3), hunter_4(4);
 	printf("\e[1;1H\e[2J");
 	printf("Welcome to our duck life simulator on the lake \"Big Hunt\"\n");
 	while (days!=0)
